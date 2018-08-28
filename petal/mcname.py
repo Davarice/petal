@@ -14,6 +14,16 @@ class Player:
         self.minecraft_name = uname # minecraft username (added to list of known aliases)
         self.approved = [] # list of discord uuids who approved the whitelisting
 
+"""
+TODO:
+import json database
+find player in json database
+edit player:
+	add discord id
+	add mc name
+save json database
+"""
+
 def addToLocalDB(userdat, submission): # Add UID and username to local whitelist database
     uid = userdat["id"]
     uname = userdat["name"]
