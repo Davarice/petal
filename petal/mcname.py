@@ -7,6 +7,13 @@ ERROR CODES:
 -2:
 -9: Already whitelisted
 """
+class Player:
+    def __init__(self, discord_id, uuid, uname):
+        self.discord_uuid = discord_id # discord uuid
+        self.minecraft_uuid = uuid # minecraft/mojang uuid
+        self.minecraft_name = uname # minecraft username (added to list of known aliases)
+        self.approved = [] # list of discord uuids who approved the whitelisting
+
 def addToLocalDB(userdat, submission): # Add UID and username to local whitelist database
     uid = userdat["id"]
     uname = userdat["name"]
@@ -25,7 +32,7 @@ def idFromName(uname_raw):
 def WLRequest(nameGiven, discord_id):
     udict = idFromName(nameGiven) # Get the id from the name, or an error
     if udict["code"] == 200: # If this is 200, the second part will contain json data; Try to add it
-        verdict = addToLocalDB(udict["udat"], nameGiven)
+        verdict = addToLocalDB(udict["udat"], discord_id)
         return verdict
     #elif udict["code"] == 200: # Map response codes to function errors
         #return 
