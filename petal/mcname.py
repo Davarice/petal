@@ -16,7 +16,7 @@ class Player:
 
 """
 TODO:
-import json database
+load json database
 find player in json database
 edit player:
 	add discord id
